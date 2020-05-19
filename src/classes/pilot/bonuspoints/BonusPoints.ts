@@ -20,6 +20,19 @@ class BonusPoints{
     public AddTalentPoint() {
         this._bonus_talent_points += 1
     }
+
+    public BonusSkillPoints() {
+        return this._bonus_skill_points
+    }
+
+    public BonusLicensePoints(){
+        return this._bonus_license_points
+    }
+
+    public BonusTalentPoints(){
+        return this._bonus_talent_points
+    }
+    
 }
 
 export default BonusPoints
