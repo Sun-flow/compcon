@@ -75,6 +75,7 @@ import WeaponSlot from './classes/mech/WeaponSlot'
 import Mech from './classes/mech/Mech'
 import Reserve from './classes/pilot/reserves/Reserve'
 import BonusPoints from './classes/pilot/bonuspoints/BonusPoints'
+import SpecAdvance from './classes/pilot/bonuspoints/SpecialAdvance'
 import Project from './classes/pilot/reserves/Project'
 import Organization from './classes/pilot/reserves/Organization'
 import { Manufacturer } from './classes/Manufacturer'
@@ -160,6 +161,7 @@ export {
   PilotSkill,
   PilotTalent,
   BonusPoints,
+  SpecAdvance,
   Reserve,
   Project,
   Organization,
