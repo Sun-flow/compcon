@@ -64,7 +64,7 @@ class Pilot {
   private cc_ver: string
   private _brews: string[]
 
-  private pointBonuses: BonusPoints
+  private bonusPoints: BonusPoints
 
   public constructor() {
     this._id = uuid()
@@ -98,7 +98,7 @@ class Pilot {
     this._brews = []
     // this._initCounters()
 
-    this.pointBonuses = new BonusPoints
+    this.bonusPoints = new BonusPoints
   }
 
   // -- Utility -----------------------------------------------------------------------------------
@@ -473,7 +473,7 @@ class Pilot {
   }
 
   public get MaxSkillPoints(): number {
-    const bonus = this.Reserves.filter(x => x.ID === 'reserve_skill').length
+    const bonus = this.Reserves.filter(x => x.ID === 'reserve_skill').length + this.
     return Rules.MinimumPilotSkills + this._level + bonus
   }
 
