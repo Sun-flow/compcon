@@ -474,7 +474,7 @@ class Pilot {
   }
 
   public get MaxSkillPoints(): number {
-    const bonus = this.Reserves.filter(x => x.ID === 'reserve_skill').length + this.
+    const bonus = this.Reserves.filter(x => x.ID === 'reserve_skill').length + this.bonusPoints.BonusSkillPoints()
     return Rules.MinimumPilotSkills + this._level + bonus
   }
 
