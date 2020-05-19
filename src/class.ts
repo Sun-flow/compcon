@@ -20,6 +20,7 @@ import {
   ReserveType,
   OrgType,
   EncounterSide,
+  SpecialAdvanceType
 } from './classes/enums'
 import Tag from './classes/Tag'
 import {
@@ -137,6 +138,7 @@ export {
   HASE,
   MechType,
   ReserveType,
+  SpecialAdvanceType,
   OrgType,
   License,
   CoreBonus,

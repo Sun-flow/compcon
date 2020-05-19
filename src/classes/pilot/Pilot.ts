@@ -474,8 +474,9 @@ class Pilot {
   }
 
   public get MaxSkillPoints(): number {
-    const bonus = this.Reserves.filter(x => x.ID === 'reserve_skill').length + this.bonusPoints.BonusSkillPoints()
-    return Rules.MinimumPilotSkills + this._level + bonus
+    const reserve_bonus = this.Reserves.filter(x => x.ID === 'reserve_skill').length
+    const special_advance_bonus = this.SpecialAdvances.filter(x => x.type === 'special_skill_advance').length
+    return Rules.MinimumPilotSkills + this._level + reserve_bonus + special_advance_bonus
   }
 
   public get IsMissingSkills(): boolean {
@@ -823,6 +824,12 @@ class Pilot {
   public RemoveOrganization(index: number): void {
     this._orgs.splice(index, 1)
     this.save()
+  }
+
+  // -- SpecialAdvance ----------------------------------------------------------------------------------
+
+  public get SpecialAdvances(): Reserve[] {
+    return this._special_advances
   }
 
   // -- Loadouts ----------------------------------------------------------------------------------

@@ -1,38 +1,54 @@
+import { store } from '@/store'
+import { SpecialAdvanceType } from '@/class'
+import { special_advances } from 'lancer-data'
+
 class SpecialAdvance{
-    private _bonus_skill_points: number
-    private _bonus_license_points: number
-    private _bonus_talent_points: number
+    protected type: SpecialAdvanceType
+    private _name: string
+    private _description: string
 
-    public constructor(){
-        this._bonus_skill_points = 0
-        this._bonus_license_points = 0
-        this._bonus_talent_points = 0        
+    public get Type(): SpecialAdvanceType {
+      return this.type
     }
 
-    public AddSkillPoint() {
-        this._bonus_skill_points += 1   
+    public get Name(): string {
+      return this._name
     }
 
-    public AddLicensePoint() {
-        this._bonus_license_points += 1
+    public get Description(): string {
+      return this._description
     }
 
-    public AddTalentPoint() {
-        this._bonus_talent_points += 1
+    public constructor(data: ISpecialAdvanceData) {
+        this._type = (data.type as SpecialAdvanceType) || SpecialAdvanceType.Skill
+        this._name = data.name || ''
+        this._description = data.description || ''
     }
 
-    public BonusSkillPoints() {
-        return this._bonus_skill_points
+    protected save(): void {
+        store.dispatch('saveData')
     }
 
-    public BonusLicensePoints(){
-        return this._bonus_license_points
+    public static Serialize(special_advance: SpecialAdvance): ISpecialAdvanceData {
+      return {
+        type: special_advance.Type,
+        name: special_advance.Name,
+        description: special_advance.Description,
+      }
     }
 
-    public BonusTalentPoints(){
-        return this._bonus_talent_points
+    public static Deserialize(sData: ISpecialAdvanceData): SpecialAdvance {
+      let data = special_advances.find(x => x.type === sData.type)
+      if (!data)
+        data = {
+          type: sData.type,
+          name: sData.name,
+          description: sData.description,
+        }
+      const s = new SpecialAdvance(data)
+      return s
     }
-    
+
 }
 
 export default SpecialAdvance

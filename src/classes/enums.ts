@@ -113,6 +113,10 @@ enum ReserveType {
   Organization = 'Organization',
 }
 
+enum SpecialAdvanceType {
+  Skill = 'Skill',
+}
+
 enum OrgType {
   Military = 'Military',
   Scientific = 'Scientific',
