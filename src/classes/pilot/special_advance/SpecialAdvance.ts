@@ -1,4 +1,4 @@
-class BonusPoints{
+class SpecialAdvance{
     private _bonus_skill_points: number
     private _bonus_license_points: number
     private _bonus_talent_points: number
@@ -22,4 +22,4 @@ class BonusPoints{
     }
 }
 
-export default BonusPoints
+export default SpecialAdvance

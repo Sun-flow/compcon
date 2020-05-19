@@ -17,7 +17,7 @@ import {
   Organization,
   CompendiumItem,
   ContentPack,
-  BonusPoints
+  SpecialAdvance
 } from '@/class'
 import { store } from '@/store'
 import gistApi from '@/io/apis/gist'
@@ -54,6 +54,8 @@ class Pilot {
   private _mechSkills: MechSkills
 
   private _reserves: Reserve[]
+  private _special_advances: SpecialAdvance[]
+
   private _orgs: Organization[]
 
   private _loadout: PilotLoadout
@@ -64,7 +66,6 @@ class Pilot {
   private cc_ver: string
   private _brews: string[]
 
-  private bonusPoints: BonusPoints
 
   public constructor() {
     this._id = uuid()
@@ -93,12 +94,12 @@ class Pilot {
     this._active_mech = null
     this._mechs = []
     this._reserves = []
+    this._special_advances = []
     this._orgs = []
     this.cc_ver = process.env.npm_package_version || 'UNKNOWN'
     this._brews = []
     // this._initCounters()
 
-    this.bonusPoints = new BonusPoints
   }
 
   // -- Utility -----------------------------------------------------------------------------------
