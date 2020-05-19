@@ -17,6 +17,7 @@ import {
   Organization,
   CompendiumItem,
   ContentPack,
+  SpecialAdvance
 } from '@/class'
 import { store } from '@/store'
 import gistApi from '@/io/apis/gist'
@@ -53,6 +54,8 @@ class Pilot {
   private _mechSkills: MechSkills
 
   private _reserves: Reserve[]
+  private _special_advances: SpecialAdvance[]
+
   private _orgs: Organization[]
 
   private _loadout: PilotLoadout
@@ -62,6 +65,7 @@ class Pilot {
 
   private cc_ver: string
   private _brews: string[]
+
 
   public constructor() {
     this._id = uuid()
@@ -90,10 +94,12 @@ class Pilot {
     this._active_mech = null
     this._mechs = []
     this._reserves = []
+    this._special_advances = []
     this._orgs = []
     this.cc_ver = process.env.npm_package_version || 'UNKNOWN'
     this._brews = []
     // this._initCounters()
+
   }
 
   // -- Utility -----------------------------------------------------------------------------------
@@ -468,8 +474,9 @@ class Pilot {
   }
 
   public get MaxSkillPoints(): number {
-    const bonus = this.Reserves.filter(x => x.ID === 'reserve_skill').length
-    return Rules.MinimumPilotSkills + this._level + bonus
+    const reserve_bonus = this.Reserves.filter(x => x.ID === 'reserve_skill').length
+    const special_advance_bonus = this.SpecialAdvances.filter(x => x.type === 'special_skill_advance').length
+    return Rules.MinimumPilotSkills + this._level + reserve_bonus + special_advance_bonus
   }
 
   public get IsMissingSkills(): boolean {
@@ -817,6 +824,12 @@ class Pilot {
   public RemoveOrganization(index: number): void {
     this._orgs.splice(index, 1)
     this.save()
+  }
+
+  // -- SpecialAdvance ----------------------------------------------------------------------------------
+
+  public get SpecialAdvances(): Reserve[] {
+    return this._special_advances
   }
 
   // -- Loadouts ----------------------------------------------------------------------------------

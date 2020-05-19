@@ -20,6 +20,7 @@ import {
   ReserveType,
   OrgType,
   EncounterSide,
+  SpecialAdvanceType
 } from './classes/enums'
 import Tag from './classes/Tag'
 import {
@@ -74,6 +75,7 @@ import { WeaponMod } from './classes/mech/WeaponMod'
 import WeaponSlot from './classes/mech/WeaponSlot'
 import Mech from './classes/mech/Mech'
 import Reserve from './classes/pilot/reserves/Reserve'
+import SpecialAdvance from './classes/pilot/special_advance/SpecialAdvance'
 import Project from './classes/pilot/reserves/Project'
 import Organization from './classes/pilot/reserves/Organization'
 import { Manufacturer } from './classes/Manufacturer'
@@ -103,6 +105,7 @@ import {
 import { Encounter, Rest, Mission, ActiveMission, MissionStepType } from './classes/encounter'
 import { ContentPack } from './classes/ContentPack'
 import { Counter } from './classes/Counter'
+
 
 export {
   Rules,
@@ -135,6 +138,7 @@ export {
   HASE,
   MechType,
   ReserveType,
+  SpecialAdvanceType,
   OrgType,
   License,
   CoreBonus,
@@ -157,6 +161,7 @@ export {
   PilotLoadout,
   PilotSkill,
   PilotTalent,
+  SpecialAdvance,
   Reserve,
   Project,
   Organization,

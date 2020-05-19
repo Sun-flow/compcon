@@ -127,6 +127,12 @@ declare interface IReserveData {
   used: boolean
 }
 
+declare interface ISpecialAdvanceData {
+  type?: string
+  name?: string
+  description?: string
+}
+
 declare interface IProjectData extends IReserveData {
   complicated: boolean
   can_finish: boolean
