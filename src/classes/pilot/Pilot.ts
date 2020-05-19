@@ -17,7 +17,8 @@ import {
   Organization,
   CompendiumItem,
   ContentPack,
-  SpecialAdvance
+  SpecialAdvance,
+  SpecialAdvanceType
 } from '@/class'
 import { store } from '@/store'
 import gistApi from '@/io/apis/gist'
@@ -475,7 +476,7 @@ class Pilot {
 
   public get MaxSkillPoints(): number {
     const reserve_bonus = this.Reserves.filter(x => x.ID === 'reserve_skill').length
-    const special_advance_bonus = this.SpecialAdvances.filter(x => x.type === 'special_skill_advance').length
+    const special_advance_bonus = this.SpecialAdvances.filter(x => x.type === SpecialAdvanceType.Skill).length
     return Rules.MinimumPilotSkills + this._level + reserve_bonus + special_advance_bonus
   }
 
